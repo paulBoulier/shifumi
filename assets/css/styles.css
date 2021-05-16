@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #ececec;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap;
+    align-content: center;
+    justify-content: center; */
+}
+
+.container {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    font-size: 0;
+    background-image: url("/assets/img/background.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: .5rem;
+}
+
+header>div,
+footer>div {
+    display: flex;
+}
+
+header>div {
+    float: right;
+}
+
+header>div>h1 {
+    order: -1;
+}
+
+.cards {
+    left: 50%;
+    transform: translateX(-50%) scaleX(1);
+    right: -50%;
+    width: 43.5rem;
+    height: 17.5rem;
+    position: absolute;
+}
+
+/* animation */
+
+.cards-player.active,
+.cards-enemy.active {
+    transition:1s all;
+    left: 50%;
+    transform-origin: center;
+}
+
+.cards-player.active {
+    bottom: 50%;
+    transform: translate(calc(-50% - 14.5rem), 50%) scaleX(1);
+}
+
+.cards-enemy.active {
+    top: 50%;
+    transform: translate(calc(-50% + 14.5rem), -50%) scaleX(-1);
+}
+
+/* .cards-player.active.reverse {
+    transform: translate(calc(-50% - 14.5rem), 50%) scaleX(-1);
+}
+
+.cards-enemy.active.reverse {
+    transform: translate(calc(-50% + 14.5rem), -50%) scaleX(-1);
+} */
+
+.card:nth-child(1) {
+    left: 1rem;
+}
+
+.card:nth-child(2) {
+    left: 50%;
+    transform: translateX(-50%) scaleX(1);
+    right: -50%;
+}
+
+.card:nth-child(3) {
+    right: 1rem;
+}
+
+.card:nth-child(1).active,
+.card:nth-child(3).active {
+    transform: translateY(-2rem) scaleX(1);
+}
+
+.card:nth-child(2).active {
+    transform: translate(-50%, -2rem) scaleX(1);
+}
+
+/* .cards-enemy .card:nth-child(1) .card-image {
+    background-image: url("../img/recto_rock_red.png");
+    background-size: contain;
+}
+
+.cards-enemy .card:nth-child(2) .card-image {
+    background-image: url("../img/recto_scissors_red.png");
+    background-size: contain;
+}
+
+.cards-enemy .card:nth-child(3) .card-image {
+    background-image: url("../img/recto_paper_red.png");
+    background-size: contain;
+} */
+
+.cards-enemy .card:nth-child(1) .card-image,
+.cards-enemy .card:nth-child(2) .card-image,
+.cards-enemy .card:nth-child(3) .card-image {
+    background-image: url("../img/verso_card.png");
+    background-size: contain;
+}
+
+.cards-player .card:nth-child(1) .card-image {
+    background-image: url("../img/recto_rock_blue.png");
+    background-size: contain;
+}
+
+.cards-player .card:nth-child(2) .card-image {
+    background-image: url("../img/recto_scissors_blue.png");
+    background-size: contain;
+}
+
+.cards-player .card:nth-child(3) .card-image {
+    background-image: url("../img/recto_paper_blue.png");
+    background-size: contain;
+}
+
+.card-image,
+.card-shadow,
+.card-border {
+    position: absolute;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    z-index: 1;
+}
+
+.card-border {
+    opacity: 0;
+    height: 17.5rem;
+    width: 12.5rem;
+    top: -.5rem;
+    left: -.5rem;
+    border-radius: 2.5rem;
+    border: .5rem  solid black;
+}
+
+.card-shadow {
+    width: 19.25rem;
+    height: 24.28125rem;
+    background-image: url("../img/recto_card_shadow.png");
+    background-size: contain;
+    top: -2.75rem;
+    left: -2.78125rem;
+    user-select: none;
+}
+
+.cards-enemy {
+    top: 1rem;
+    /* left: -37.5rem; */
+}
+
+.cards-enemy .card {
+    bottom: 0;
+}
+
+.cards-player {
+    bottom: 1rem;
+    right: -37.5rem;
+}
+
+.cards-player.preload {
+    left: 0;
+    transform: translateX(-100%) scaleX(1);
+}
+
+.cards-enemy.preload {
+    left: unset;
+    right: 0;
+    transform: translateX(100%) scaleX(1);
+}
+
+.cards .card {
+    height: 17.5rem;
+    width: 12.5rem;
+    position: absolute;
+}
+
+/* .cards .card-image:hover + .card-border {
+    opacity: 1;
+} */
+
+.card.active {
+    transform: translateY(2rem) scaleX(1);
+}
+
+button {
+    width: 8rem;
+    height: 4rem;
+    background-color: #ffbb00;
+    border: .5rem solid white;
+    /* border: 0; */
+    box-sizing: content-box;
+    border-radius: 1rem;
+    color: white;
+    font-size: x-large;
+    position: absolute;
+    left: 50%;
+    right: -50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scaleX(1);
+}
+
+button:hover {
+    background-color: hsl(44, 100%, 45%);
+}
+
+.win-message {
+    opacity: 0;
+    font-size: 10rem;
+    color: white;
+    transition: opacity 1s;
+    position: absolute;
+    left: 50%;
+    right: -50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scaleX(1);
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 0 4rem #404554;
+    user-select: none;
+}
+
+.win-message.active {
+    opacity: 1;
+}
